@@ -57,7 +57,7 @@ def parse_verbosity():
                     else int(sys.argv[idx + 1])
                 )
                 break
-            except ValueError:
+            except (ValueError, IndexError):
                 pass
     return verbosity
 
