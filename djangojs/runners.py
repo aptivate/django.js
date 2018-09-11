@@ -50,8 +50,15 @@ def parse_verbosity():
     for idx, arg in enumerate(sys.argv):
         match = regex.match(arg)
         if match:
-            verbosity = int(match.group(1)) if match.group(1) else int(sys.argv[idx + 1])
-            break
+            try:
+                verbosity = (
+                    int(match.group(1))
+                    if match.group(1)
+                    else int(sys.argv[idx + 1])
+                )
+                break
+            except ValueError:
+                pass
     return verbosity
 
 VERBOSITY = parse_verbosity()
